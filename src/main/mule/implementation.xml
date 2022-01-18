@@ -6,14 +6,8 @@
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
-	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="ad026286-bdae-4869-a216-bde0e8ac1e68" basePath="/">
-		<http:listener-connection host="0.0.0.0" port="8081" />
-	</http:listener-config>
-	<db:config name="Database_Config" doc:name="Database Config" doc:id="20ea531d-65e7-45d5-a07d-6b62169c9a85" >
-		<db:my-sql-connection host="remotemysql.com" port="3306" user="DbfJ2CnUMo" password="EyNpOCklyH" database="DbfJ2CnUMo" />
-	</db:config>
-	<flow name="emp-wsFlow1" doc:id="28352f1f-9d5c-43a6-8b9c-4aa4a56c5224" >
-		<http:listener doc:name="POST/emp" doc:id="660569dd-aee3-4fc1-96c6-5769c7f9c00a" config-ref="HTTP_Listener_config" path="/emp" allowedMethods="POST"/>
+	
+	<flow name="postemp" doc:id="28352f1f-9d5c-43a6-8b9c-4aa4a56c5224" >
 		<db:insert doc:name="Insert" doc:id="25a74ee4-f8c6-40fb-b1be-1b39b40e9366" config-ref="Database_Config">
 			<db:sql ><![CDATA[insert into Employee
 values(:E_ID, :E_NAME, :E_SALARY)]]></db:sql>
@@ -31,8 +25,7 @@ payload]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
 	</flow>
-	<flow name="emp-wsFlow" doc:id="6e55a737-71f1-4607-9c73-10d31ef28324" >
-		<http:listener doc:name="GET/emp" doc:id="d58cf36f-ffdf-493a-8909-1b9ba7d33f31" config-ref="HTTP_Listener_config" path="/emp" allowedMethods="GET"/>
+	<flow name="getemp" doc:id="6e55a737-71f1-4607-9c73-10d31ef28324" >
 		<db:select doc:name="Select" doc:id="f9e4ce86-5d6d-4efc-bcbf-5d52633b5bd0" config-ref="Database_Config">
 			<db:sql ><![CDATA[SELECT * FROM Employee]]></db:sql>
 		</db:select>

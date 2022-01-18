@@ -30,6 +30,17 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
+					<cloudHubDeployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<username>Gopal_API2478</username>
+						<password>Champion@000</password>
+						<workers>1</workers>
+						<workerType>Micro</workerType>
+						<environment>Sandbox</environment>
+						<muleVersion>4.4.0</muleVersion>
+						<applicationName>emp-project6789043</applicationName>
+						<objectStoreV2>true</objectStoreV2>
+					</cloudHubDeployment>
 					<sharedLibraries>
 						<sharedLibrary>
 							<groupId>mysql</groupId>
@@ -64,6 +75,19 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.27</version>
+		</dependency>
+		<dependency>
+			<groupId>75f8e479-744e-4b6a-b64d-f9f3bbf0f761</groupId>
+			<artifactId>emp-api</artifactId>
+			<version>1.0.0</version>
+			<classifier>raml</classifier>
+			<type>zip</type>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-apikit-module</artifactId>
+			<version>1.5.5</version>
+			<classifier>mule-plugin</classifier>
 		</dependency>
 	</dependencies>
 
